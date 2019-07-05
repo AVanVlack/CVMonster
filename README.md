@@ -2,13 +2,15 @@
 
 A simple animation that uses computer vision to allow a monster to watch pedestrians and scare away someone getting too curious.
 
-Built with **golang** and designed to run on an **embedded system**. Uses **GoCV/openCV** for computer vision and **gg** for golang animation.
+Built with **golang** and designed to run on an **embedded system**. Uses **GoCV/openCV** for computer vision and **pixel** for drawing animations.
 
 **A work in progress.**
 
 ## Installation
 
-```golang
+Follow GoCV setup instructions then run:
+
+```bash
 go run cvmonster
 ```
 
