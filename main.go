@@ -29,6 +29,8 @@ func run() {
 
 	imd := imdraw.New(nil)
 
+	eye.look(80)
+
 	for !win.Closed() {
 		eye.draw(imd)
 		win.Clear(colornames.Aliceblue)
