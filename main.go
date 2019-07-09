@@ -6,11 +6,9 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/imdraw"
 	"github.com/faiface/pixel/pixelgl"
-	"golang.org/x/image/colornames"
 )
 
 func run() {
-	fps := time.Tick(time.Second / 30)
 	cfg := pixelgl.WindowConfig{
 		Title:  "CV Monster",
 		Bounds: pixel.R(0, 0, 1024, 768),
@@ -30,10 +28,11 @@ func run() {
 	imd := imdraw.New(nil)
 
 	eye.look(80)
-
+	fps := time.Tick(time.Second / 10)
 	for !win.Closed() {
+		imd.Clear()
 		eye.draw(imd)
-		win.Clear(colornames.Aliceblue)
+		win.Clear(pixel.RGB(1, 1, 1))
 		imd.Draw(win)
 		win.Update()
 		<-fps
