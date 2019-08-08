@@ -8,11 +8,15 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 )
 
+// -- To Do --
+// clean up pixel run setup.
+
 func run() {
 	cfg := pixelgl.WindowConfig{
 		Title:  "CV Monster",
 		Bounds: pixel.R(0, 0, 1024, 768),
 		VSync:  true,
+		//Undecorated: true,
 	}
 	win, err := pixelgl.NewWindow(cfg)
 	if err != nil {
@@ -27,6 +31,8 @@ func run() {
 
 	imd := imdraw.New(nil)
 
+	track := newTracker()
+
 	eye.look(80)
 	fps := time.Tick(time.Second / 10)
 	for !win.Closed() {
@@ -35,10 +41,16 @@ func run() {
 		win.Clear(pixel.RGB(1, 1, 1))
 		imd.Draw(win)
 		win.Update()
+		track.processFrame()
 		<-fps
 	}
 }
 
 func main() {
-	pixelgl.Run(run)
+	//pixelgl.Run(run)
+	track := newTracker()
+	for {
+		track.processFrame()
+	}
+
 }
